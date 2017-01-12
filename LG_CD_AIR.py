@@ -4,7 +4,7 @@ import time
 
 consumer_key = ''
 consumer_secret = ''
-access_token =''
+access_token = ''
 access_token_secret = ''
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -12,6 +12,8 @@ api = tweepy.API(auth, proxy="127.0.0.1:8080")
 
 LGS = ctypes.windll.LoadLibrary( 'LogitechLedEnginesWrapper.dll' )
 LGS.LogiLedInit()
+
+sec = 600
 
 def getAirLevel():
     text = api.get_user('CGChengduAir').timeline()[0].text
@@ -31,8 +33,8 @@ while True:
     try:
         red,green,blue = getAirLevel()
         LGS.LogiLedSetLighting(red, green, blue)
-        time.sleep(600)
+        time.sleep(sec)
     except:
         LGS.LogiLedSetLighting(0,0,0)
-        time.sleep(600)
+        time.sleep(sec)
         pass
