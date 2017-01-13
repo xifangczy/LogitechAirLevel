@@ -19,11 +19,11 @@ def getAirLevel():
     text = api.get_user('CGChengduAir').timeline()[0].text
     air = int( text.split(';')[3] )
     red,green,blue = 0,0,0
-    if air <= 50:
+    if air <= 55:
         red,green,blue = 0,0,100
-    elif air <= 100:
+    elif air <= 150:
         red,green,blue = 100,50,0
-    elif air <= 200:
+    elif air <= 250:
         red,green,blue = 100,30,0
     else:
         red,green,blue = 100,0,0
