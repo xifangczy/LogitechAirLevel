@@ -37,8 +37,7 @@ while True:
     try:
         red,green,blue = getAirLevel()
         LGS.LogiLedSetLighting(red, green, blue)
-        time.sleep(sec)
     except:
         LGS.LogiLedSetLighting(0,0,0)
-        time.sleep(sec)
         pass
+    time.sleep(sec)
